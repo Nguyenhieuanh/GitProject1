@@ -8,14 +8,16 @@ class Student
     protected $phone;
     protected $email;
     protected $address;
+    protected $image;
 
-    public function __construct($name, $age, $phone, $email, $address)
+    public function __construct($name, $age, $phone, $email, $address, $image)
     {
         $this->name = $name;
         $this->age = $age;
         $this->address = $address;
         $this->phone = $phone;
         $this->email = $email;
+        $this->image = $image;
     }
 
     public function getName()
@@ -43,6 +45,11 @@ class Student
         return $this->email;
     }
 
+    public function getImage()
+    {
+        return $this->image;
+    }
+
     public function setName($name)
     {
         return $this->name = $name;
@@ -66,6 +73,11 @@ class Student
     public function setEmail($email)
     {
         return $this->email = $email;
+    }
+
+    public function setImage($image)
+    {
+        return $this->image = $image;
     }
 
 }

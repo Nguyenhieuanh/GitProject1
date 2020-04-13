@@ -26,6 +26,7 @@ class StudentsManagement
             "phone" => $student->getPhone(),
             "email" => $student->getEmail(),
             "address" => $student->getAddress(),
+            "image" => $student->getImage()
         ];
         array_push($students, $data);
         $this->saveDataJson($students);
@@ -35,7 +36,7 @@ class StudentsManagement
     {
         $students = $this->getDataJson();
         foreach ($students as $obj) {
-            $student = new Student($obj->name, $obj->age, $obj->phone, $obj->email, $obj->address);
+            $student = new Student($obj->name, $obj->age, $obj->phone, $obj->email, $obj->address, $obj->image);
             array_push($this->studentList, $student);
         }
         return $this->studentList;
@@ -50,7 +51,7 @@ class StudentsManagement
     public function getStudentByIndex($index)
     {
         $dataArr = $this->getDataJson();
-        return new Student($dataArr[$index]->name, $dataArr[$index]->age, $dataArr[$index]->phone, $dataArr[$index]->email, $dataArr[$index]->address);
+        return new Student($dataArr[$index]->name, $dataArr[$index]->age, $dataArr[$index]->phone, $dataArr[$index]->email, $dataArr[$index]->address, $dataArr[$index]->image);
     }
 
     public function updateStudent($index, $student)
@@ -62,6 +63,7 @@ class StudentsManagement
             "phone" => $student->getPhone(),
             "email" => $student->getEmail(),
             "address" => $student->getAddress(),
+            "image" => $student->getImage()
         ];
         $students[$index] = $data;
         $this->saveDataJson($students);
@@ -83,7 +85,7 @@ class StudentsManagement
         $search_name = [];
         foreach ($dataArr as $obj) {
             if (!empty($searchName) && ($searchName == $obj->name)) {
-                $student = new Student($obj->name, $obj->age, $obj->phone, $obj->email, $obj->address);
+                $student = new Student($obj->name, $obj->age, $obj->phone, $obj->email, $obj->address, $obj->image);
                 array_push($search_name, $student);
             }
         }

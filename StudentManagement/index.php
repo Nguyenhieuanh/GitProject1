@@ -26,13 +26,21 @@ $students = $studentManagement->searchByName($searchName);
 </style>
 <body>
 
-<form method="post" style="margin: 15px">
-    <br/>
-    <input class="form-control" type="text" name="searchName" placeholder="Search by Name">
-</form>
+
 <br>
 <div class="container">
-    <h2>Students List</h2>
+    <div style="float: left; position: absolute"><h2>Students List</h2></div>
+    <form method="post" style="margin: 15px; width: 400px;">
+        <br/>
+        <div style="margin-left: 700px; overflow: hidden; width: 500px">
+            <div style="float: left;">
+                <input class="form-control" type="text" name="searchName" placeholder="Search by Name" style=" width: 300px; margin-right: 10px">
+            </div>
+            <div style="float: left">
+                <button type="submit" class="btn btn-outline-secondary">Search</button>
+            </div>
+        </div>
+    </form>
     <table class="table table-striped">
         <tr class="table-active">
             <th style="text-align: center">STT</th>
@@ -41,6 +49,7 @@ $students = $studentManagement->searchByName($searchName);
             <th>Phone number</th>
             <th>Email</th>
             <th>Address</th>
+            <th>Image</th>
             <th>&ensp;</th>
         </tr>
         <?php foreach ($students as $index => $student): ?>
@@ -51,8 +60,9 @@ $students = $studentManagement->searchByName($searchName);
                 <td><?php echo $student->getPhone()?></td>
                 <td><?php echo $student->getEmail()?></td>
                 <td><?php echo $student->getAddress()?></td>
-                <td><a onclick="return confirm('Ban chac chan muon xoa?')"
-                       href="action/delete.php?index=<?php echo $index?>">Xoa</a>
+                <td><img width="70px" src="<?php echo "upload/". $student->getImage()?>"></td>
+                <td><a onclick="return confirm('Are you sure you want to delete ?')"
+                       href="action/delete.php?index=<?php echo $index?>">Delete</a>
                     <span>|</span>
                     <a href="view/edit.php?index=<?php echo $index?>">Update</a>
                 </td>
@@ -65,7 +75,4 @@ $students = $studentManagement->searchByName($searchName);
     </div>
 </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </html>
